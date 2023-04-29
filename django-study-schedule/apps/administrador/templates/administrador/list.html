@@ -1,0 +1,18 @@
+{% extends "administrador/base.html" %}
+
+
+{% block body %}
+
+<fieldset class="border p-4">
+  <a class="btn btn-success" href="{% url 'administrador:models-create' %}">
+    <i class="fas fa-plus-circle"></i>
+    Novo Cadastro
+  </a>
+  <fieldset class="row border px-4 py-5 mt-4 position-relative">
+    {% for obj in object_list %}
+      <a href="{% url 'administrador:models-update' obj.uuid %}"> {{obj}} </a>
+    {% endfor %}
+  </fieldset>
+</fieldset>
+
+{% endblock %}

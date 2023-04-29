@@ -1,0 +1,26 @@
+{% extends "administrador/base.html" %}
+{% load widget_tweaks %}
+
+{% block body %}
+  <fieldset class="border p-4">
+      <div class="row">
+        <div class="col-md-12 mb-4">
+          <label for="{{form.titulo.id_for_label}}" class="form-label">Título:</label>
+          {{form.titulo|add_class:"form-control fw-bold fs-3"}}
+        </div>
+      </div>
+
+      <form method="POST" action="">{% csrf_token %}
+        {{ form.myfield|add_class:"form-control"}}
+      </form>  
+      <div class="row align-start">
+        <div class="col-6 text-center">
+          <input class="btn btn-success fw-bold mt-2" style="width:80px;" type="submit" value="Salvar"/>
+        </div>
+      </div>
+    </fieldset>
+{% endblock %}
+
+{% block js_imports%}
+  {% comment %} {{form.media}} {% endcomment %}
+{% endblock %}

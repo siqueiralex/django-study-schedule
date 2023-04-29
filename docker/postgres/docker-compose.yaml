@@ -1,0 +1,24 @@
+volumes:
+  dstudy_pg_data:
+    name: dstudy_pg_data
+
+networks:
+  dstudy_backend:
+    external: true
+
+services:
+  db:
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    ports:
+      - 5432:5432
+    volumes:
+      - "dstudy_pg_data:/var/lib/postgresql/data"
+    networks:
+      - dstudy_backend

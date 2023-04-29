@@ -1,0 +1,30 @@
+volumes:
+  dstudy_static:
+    name: dstudy_static
+  
+networks:
+  dstudy_backend:
+    external: true
+
+services:
+  django:
+    image: compose-dstudy:latest
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ..:/app
+    environment:
+      - PYTHONPATH=/app
+      - PATH=${PATH}:/home/python/.local/bin
+      - PROJECT_STATIC_ROOT=/static/
+      - PROJECT_STATIC_URL=/static/
+      - DJANGO_SETTINGS_MODULE=django-study-schedule.settings
+      - PROJECT_ENV=${PROJECT_ENV}
+      - DJANGO_SUPERUSER_USERNAME=${DJANGO_SUPERUSER_USERNAME}
+      - DJANGO_SUPERUSER_PASSWORD=${DJANGO_SUPERUSER_PASSWORD}
+      - DJANGO_SUPERUSER_EMAIL=${DJANGO_SUPERUSER_EMAIL}
+    networks:
+      - dstudy_backend

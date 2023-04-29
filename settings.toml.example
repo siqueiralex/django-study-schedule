@@ -1,0 +1,9 @@
+[development]
+Debug = true
+ALLOWED_HOSTS = ["*"]
+DATABASES__default__ENGINE = "django.db.backends.postgresql"
+DATABASES__default__NAME="postgres"
+DATABASES__default__USER = "postgres"
+DATABASES__default__PASSWORD = "postgres"
+DATABASES__default__HOST = "db"
+DATABASES__default__PORT = 5432
