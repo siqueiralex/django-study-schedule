@@ -12,7 +12,6 @@ node_modules/*
 settings.toml
 !settings.toml.example
 
-fixtures/producao/*
 
 #env
 .env
